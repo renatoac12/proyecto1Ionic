@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      AssistApp
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,45 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <ion-item id="tituloHome" class="ion-margin-top ion-text-center">
+    <ion-label>
+      <h1>Login</h1>
+    </ion-label>
+  </ion-item>
+
+
+<form action="" id="formularioHome">
+  <ion-card>
+  <ion-item>
+    <ion-label positon="floating">Usuario: </ion-label>
+    <ion-input type="text" placeholder="Ingresa tu usuaio"></ion-input>
+  </ion-item>
+<br>
+  <ion-item>
+    <ion-label positon="floating">Contraseña: </ion-label>
+    <ion-input type="password" placeholder="Ingresa tu Contraseña"></ion-input>
+  </ion-item>
+  <ion-row class="ion-justify-content-center ion-margin-top">
+    <ion-col size="4">
+      <ion-button>Ingresar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-card>
+</form>
+<br>
+
+
+<ion-row class="ion-justify-content-center">
+  <ion-col size="4">
+    <ion-button class="" [routerLink]="['/sign-in']" routerLinkActive="router-link-active"  >Registrarse</ion-button>
+  </ion-col>
+  <ion-col size="6">
+    <ion-button class="">Olvidé mi Contraseña</ion-button>
+  </ion-col>
+</ion-row>
 </ion-content>
