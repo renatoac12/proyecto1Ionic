@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+      <ion-title>Registrarse</ion-title>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    
+    
+
+  </ion-header>
+  
+
+  <ion-item class="ion-text-center ion-margin-vertical">
+    <ion-label>
+      <h1>Registrarse</h1>
+    </ion-label>
+  </ion-item>
+
+  <form [formGroup]="formularioRegistro">
+  <ion-card>
+    <ion-item class="">
+      <ion-label positon="floating">Usuario: </ion-label>
+      <ion-input type="text" formControlName="usuario" placeholder="Ingresa tu Usuario"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label positon="floating">Contraseña: </ion-label>
+      <ion-input type="password" formControlName="password" placeholder="Ingresa tu Contraseña"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label positon="floating">Confirmar: </ion-label>
+      <ion-input type="password" formControlName="confirmarPassword" placeholder="Confirma tu Contraseña"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label positon="floating">Nombre: </ion-label>
+      <ion-input type="text" formControlName="nombre" placeholder="Ingresa tu Nombre"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label positon="floating">Apellido: </ion-label>
+      <ion-input type="text" formControlName="apellido" placeholder="Ingresa tu Apellido"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label positon="floating">Rut: </ion-label>
+      <ion-input type="text" formControlName="rut" placeholder="Ingresa tu rut"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label positon="floating">Carrera: </ion-label>
+      <ion-input type="text" formControlName="carrera" placeholder="Ingresa tu carrera"></ion-input>
+    </ion-item>
+
+    <ion-row class="ion-justify-content-center ion-margin-top">
+      <ion-col size="4">
+        <ion-button (click)="guardar()" class="">Registrarse</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  </form>
