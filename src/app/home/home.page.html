@@ -21,24 +21,24 @@
   </ion-item>
 
 
-<form action="" id="formularioHome">
+<form [formGroup]="formularioHome">
   <ion-card>
   <ion-item>
     <ion-label positon="floating">Usuario: </ion-label>
-    <ion-input type="text" placeholder="Ingresa tu usuaio"></ion-input>
+    <ion-input type="text" formControlName="usuario" placeholder="Ingresa tu usuario"></ion-input>
   </ion-item>
 <br>
   <ion-item>
     <ion-label positon="floating">Contraseña: </ion-label>
-    <ion-input type="password" placeholder="Ingresa tu Contraseña"></ion-input>
-  </ion-item>
-  <ion-row class="ion-justify-content-center ion-margin-top">
-    <ion-col size="4">
-      <ion-button>Ingresar</ion-button>
-    </ion-col>
-  </ion-row>
+    <ion-input type="password" formControlName="password" placeholder="Ingresa tu Contraseña"></ion-input>
+  </ion-item> 
 </ion-card>
 </form>
+<ion-row class="ion-justify-content-center ion-margin-top">
+  <ion-col size="4">
+    <ion-button (click)="ingresar()">Ingresar</ion-button>
+  </ion-col>
+</ion-row>
 <br>
 
 
@@ -47,7 +47,7 @@
     <ion-button class="" [routerLink]="['/sign-in']" routerLinkActive="router-link-active"  >Registrarse</ion-button>
   </ion-col>
   <ion-col size="6">
-    <ion-button class="">Olvidé mi Contraseña</ion-button>
+    <ion-button class="" [routerLink]="['/forgot-pass']" routerLinkActive="router-link-active">Olvidé mi Contraseña</ion-button>
   </ion-col>
 </ion-row>
 </ion-content>
