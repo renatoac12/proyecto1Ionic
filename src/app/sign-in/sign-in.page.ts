@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, Form } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,12 +13,13 @@ export class SignInPage implements OnInit {
   formularioRegistro: FormGroup;
 
   constructor(public fb: FormBuilder,
-    public alertController: AlertController) { 
+    public alertController: AlertController,
+    public navCtrl: NavController) { 
 
     this.formularioRegistro = this.fb.group({
       'usuario': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.required),
-      'confirmarPassword': new FormControl('', Validators.required),
+      'confirmarPassword': new FormControl(''),
       'nombre': new FormControl('', Validators.required),
       'apellido': new FormControl('', Validators.required),
       'rut': new FormControl('', Validators.required),
@@ -53,6 +55,8 @@ ngOnInit(){
   }
 
   localStorage.setItem('usuario', JSON.stringify(usuario));
-  
+
+  localStorage.setItem('ingresado', 'true');
+  this.navCtrl.navigateRoot('home');
 }
 }
