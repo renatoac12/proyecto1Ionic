@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, Form } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +11,8 @@ export class SignInPage implements OnInit {
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder) { 
+  constructor(public fb: FormBuilder,
+    public alertController: AlertController) { 
 
     this.formularioRegistro = this.fb.group({
       'usuario': new FormControl('', Validators.required),
@@ -25,5 +27,32 @@ export class SignInPage implements OnInit {
 
 ngOnInit(){
     
+}
+
+  async guardar(){
+    var f = this.formularioRegistro.value;
+
+    if(this.formularioRegistro.invalid){
+      const alert = await this.alertController.create({
+        header: 'Alerta',
+        message: 'Debes completar todos los campos',
+        buttons: ['Aceptar'],
+    });
+
+    await alert.present();
+    return;
+  }
+
+  var usuario = {
+    usuario: f.usuario,
+    password: f.password,
+    nombre: f.nombre,
+    apellido: f.apellido,
+    rut: f.rut,
+    carrera: f.carrera
+  }
+
+  localStorage.setItem('usuario', JSON.stringify(usuario));
+  
 }
 }

@@ -39,7 +39,7 @@
 
     <ion-item class="ion-margin-top">
       <ion-label positon="floating">Confirmar: </ion-label>
-      <ion-input type="confirmarPassword" formControlName="password" placeholder="Confirma tu Contraseña"></ion-input>
+      <ion-input type="password" formControlName="confirmarPassword" placeholder="Confirma tu Contraseña"></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin-top">
@@ -64,7 +64,7 @@
 
     <ion-row class="ion-justify-content-center ion-margin-top">
       <ion-col size="4">
-        <ion-button class="">Registrarse</ion-button>
+        <ion-button (click)="guardar()" class="">Registrarse</ion-button>
       </ion-col>
     </ion-row>
   </ion-card>
