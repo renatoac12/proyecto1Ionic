@@ -32,8 +32,14 @@ async ingresar() {
     var usuario = JSON.parse(usuarioString);
     if (usuario.usuario == f.usuario && usuario.password == f.password) {
       console.log('Ingresado');
+      const alerta = await this.alertController.create({
+        header: 'Entrando...',
+        message: 'Escanee el código QR para confirmar asistencia',
+        buttons: ['Aceptar'],
+      });
+      await alerta.present();
       localStorage.setItem('ingresado', 'true');
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('qr-page');
     } else {
       const alert = await this.alertController.create({
         header: 'Datos incorrectos',

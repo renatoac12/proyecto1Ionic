@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'forgot-pass',
     loadChildren: () => import('./forgot-pass/forgot-pass.module').then( m => m.ForgotPassPageModule)
   },
+  {
+    path: 'qr-page',
+    loadChildren: () => import('./qr-page/qr-page.module').then( m => m.QrPagePageModule)
+  },
 ];
 
 @NgModule({
