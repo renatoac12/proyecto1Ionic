@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { QrPagePage } from './qr-page.page';
+import { LectorPage } from './lector.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: QrPagePage
+    component: LectorPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class QrPagePageRoutingModule {}
+export class LectorPageRoutingModule {}

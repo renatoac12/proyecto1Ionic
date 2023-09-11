@@ -39,7 +39,7 @@ async ingresar() {
       });
       await alerta.present();
       localStorage.setItem('ingresado', 'true');
-      this.navCtrl.navigateRoot('qr-page');
+      this.navCtrl.navigateRoot('lector');
     } else {
       const alert = await this.alertController.create({
         header: 'Datos incorrectos',
