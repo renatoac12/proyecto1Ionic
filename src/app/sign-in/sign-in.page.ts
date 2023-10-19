@@ -19,7 +19,6 @@ export class SignInPage implements OnInit {
     this.formularioRegistro = this.fb.group({
       'usuario': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.required),
-      'confirmarPassword': new FormControl(''),
       'nombre': new FormControl('', Validators.required),
       'apellido': new FormControl('', Validators.required),
       'rut': new FormControl('', Validators.required),
