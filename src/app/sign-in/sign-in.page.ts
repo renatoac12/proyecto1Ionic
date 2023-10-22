@@ -4,6 +4,14 @@ import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+import { Usuario } from '../models/usuario';
+import { HelperService } from '../servicios/helper.service';
+import { StorageService } from '../servicios/storage.service';
+import { Router } from '@angular/router';
+
+
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-sign-in',
@@ -22,7 +30,10 @@ export class SignInPage implements OnInit {
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
     public navCtrl: NavController,
-    private http: HttpClient) { 
+    private http: HttpClient,
+    private helper: HelperService,
+    private router: Router,
+    private storageService: StorageService) { 
 
     this.obtenerRegiones();
 
@@ -50,6 +61,7 @@ ngOnInit(){
   async guardar(){
     var f = this.formularioRegistro.value;
 
+    const loader = await this.helper.showLoader("Cargando");
     if(this.formularioRegistro.invalid){
       const alert = await this.alertController.create({
         header: 'Alerta',
@@ -58,6 +70,8 @@ ngOnInit(){
     });
 
     await alert.present();
+
+    await loader.dismiss();
     return;
   }
 
@@ -67,14 +81,23 @@ ngOnInit(){
     nombre: f.nombre,
     apellido: f.apellido,
     rut: f.rut,
-    carrera: f.carrera
+    carrera: f.carrera,
+    contrasenia : f.password,
   }
 
+  this.storageService.guardarUsuario([usuario]);
+  await loader.dismiss();
+ 
+  this.navCtrl.navigateRoot('home')
+  await this.helper.showAlert("Usuario registrado correctamente", "Información");
   localStorage.setItem('usuario', JSON.stringify(usuario));
-
   localStorage.setItem('ingresado', 'true');
-  this.navCtrl.navigateRoot('home');
+  
 }
+
+
+
+ 
 
  
 
