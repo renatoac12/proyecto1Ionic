@@ -9,6 +9,7 @@ import { Usuario } from '../models/usuario';
 import { HelperService } from '../servicios/helper.service';
 import { StorageService } from '../servicios/storage.service';
 import { Router } from '@angular/router';
+import { DatosRegionalesService } from '../servicios/datos-regionales.service';
 
 
 const { Storage } = Plugins;
@@ -33,7 +34,8 @@ export class SignInPage implements OnInit {
     private http: HttpClient,
     private helper: HelperService,
     private router: Router,
-    private storageService: StorageService) { 
+    private storageService: StorageService,
+    private DatosRegionalesService: DatosRegionalesService) { 
 
     this.obtenerRegiones();
 
@@ -43,7 +45,7 @@ export class SignInPage implements OnInit {
       'nombre': new FormControl('', Validators.required),
       'apellido': new FormControl('', Validators.required),
       'rut': new FormControl('', Validators.required),
-      'carrera': new FormControl('', Validators.required)
+      'carrera': new FormControl('', Validators.required),
   })
 
  
@@ -55,7 +57,8 @@ ngOnInit(){
     this.selectedRegion = this.regiones[0];
     this.cargarComunasPorRegion(this.selectedRegion.id);
   }
-    
+
+
 }
 
   async guardar(){
@@ -96,12 +99,9 @@ ngOnInit(){
 }
 
 
-
  
 
- 
-
-  obtenerRegiones() {
+  /* obtenerRegiones() {
     this.http.get<any[]>('https://dev.matiivilla.cl/duoc/location/region')
       .subscribe(
         (data) => {
@@ -111,25 +111,39 @@ ngOnInit(){
           console.error('Error al obtener las regiones:', error);
         }
       );
-  }
+  } */
 
+  obtenerRegiones(){
+    this.DatosRegionalesService.obtenerRegiones().subscribe(
+      (data)=>{
+        this.regiones = data.data;
+      },
+      (error)=>{
+        console.error('Error no se pueden obtener las regiones: ', error);
+
+      }
+    );
+
+  }
 
 
   cargarComunasPorRegion(regionId: any) {
-
-    this.http.get<any[]>(`https://dev.matiivilla.cl/duoc/location/comuna/${regionId}`) 
-      .subscribe(
-        (data) => {
-          this.comunas = data;
-        },
-        (error) => {
-          console.error('Error al obtener las comunas:', error);
-        }
-      );
+    if (regionId) {
+      const url = `${this.DatosRegionalesService.apiUrl2}+${regionId}`;
+      return this.http.get<any>(url);
+    } else {
+      // Manejo de error o devolución de un Observable vacío, dependiendo de tus necesidades.
+      return ('ID de región no válido');
+    }
   }
+  
 
+      
+
+
+
+  }
 
 
 
   
-}
