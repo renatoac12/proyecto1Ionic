@@ -13,6 +13,10 @@
   <div id="container" class="ion-padding">
     <ion-button expand="full" (click)="openScanner()">Abrir Escáner de QR</ion-button>
 
+    <div>
+      <img src="{{imageSource}}" style="width: 400px;" alt="">
+    <ion-button expand="full" (click)="takePicture()">Tomar foto </ion-button>
+  </div>
     <div id="videoContainer" [ngClass]="{ 'hide-result': isScanning }">
       <video #videoElement autoplay="true"></video>
     </div>
