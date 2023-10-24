@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'lector',
     loadChildren: () => import('./lector/lector.module').then( m => m.LectorPageModule)
+  },  {
+    path: 'e404',
+    loadChildren: () => import('./e404/e404.module').then( m => m.E404PageModule)
   },
+
 
 ];
 

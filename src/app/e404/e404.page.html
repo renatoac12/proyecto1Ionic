@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Página no encontrada</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+   <br>
+  </div>
+  <ion-img src="assets/images/e404.svg"></ion-img>
+
+  <ion-button routerLink="/home" expand="block" class="ion-margin-top">
+    <ion-icon name="home" slot="start"></ion-icon>
+    Volver al login
+  </ion-button>
+</ion-content>
