@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { BrowserMultiFormatReader, Result, BarcodeFormat } from '@zxing/library';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { CameraSource } from '@capacitor/camera/dist/esm/definitions';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-lector',
@@ -24,6 +25,10 @@ export class LectorPage implements OnInit {
     carrera: '',
     rut: '',
   };
+
+
+  latitud: number | any;
+  longitud: number | any;
 
   imageSource: any;
 
@@ -106,6 +111,12 @@ export class LectorPage implements OnInit {
     });
 
     this.imageSource= image.dataUrl;
+  }
 
-}
+    async obtenerCoordenadas() {
+      const coordenadas = await Geolocation.getCurrentPosition();
+      this.latitud = coordenadas.coords.latitude;
+      this.longitud = coordenadas.coords.longitude;
+    }
+
 }
