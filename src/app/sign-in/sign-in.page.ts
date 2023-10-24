@@ -94,7 +94,7 @@ ngOnInit(){
   this.navCtrl.navigateRoot('home')
   await this.helper.showAlert("Usuario registrado correctamente", "Información");
   localStorage.setItem('usuario', JSON.stringify(usuario));
-  localStorage.setItem('ingresado', 'true');
+  
   
 }
 

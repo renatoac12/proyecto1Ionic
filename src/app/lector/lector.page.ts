@@ -3,6 +3,8 @@ import { BrowserMultiFormatReader, Result, BarcodeFormat } from '@zxing/library'
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { CameraSource } from '@capacitor/camera/dist/esm/definitions';
 import { Geolocation } from '@capacitor/geolocation';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lector',
@@ -26,6 +28,7 @@ export class LectorPage implements OnInit {
     rut: '',
   };
 
+router = inject(Router);
 
   latitud: number | any;
   longitud: number | any;
@@ -117,6 +120,12 @@ export class LectorPage implements OnInit {
       const coordenadas = await Geolocation.getCurrentPosition();
       this.latitud = coordenadas.coords.latitude;
       this.longitud = coordenadas.coords.longitude;
+    }
+
+
+    onClickLogout(){
+      localStorage.removeItem('ingresado');
+      this.router.navigate(['/home']);
     }
 
 }

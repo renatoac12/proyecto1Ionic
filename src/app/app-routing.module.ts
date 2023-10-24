@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { loginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -21,10 +22,17 @@ const routes: Routes = [
   },
   {
     path: 'lector',
-    loadChildren: () => import('./lector/lector.module').then( m => m.LectorPageModule)
-  },  {
+    loadChildren: () => import('./lector/lector.module').then( m => m.LectorPageModule),
+    canActivate: [loginGuard]
+  },
+  {
     path: 'e404',
     loadChildren: () => import('./e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./e404/e404.module').then( m => m.E404PageModule),
+    canActivate: [loginGuard]
   },
 
 
